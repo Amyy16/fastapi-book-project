@@ -79,6 +79,37 @@ uvicorn main:app
 - Swagger UI: http://localhost:8000/docs
 - ReDoc: http://localhost:8000/redoc
 
+
+## Deployment Instructions
+
+### Prerequisites
+
+- **AWS EC2 Instance**: Set up an EC2 instance with a public IP.
+- **SSH Key**: Ensure you have an SSH private key (`ec2_ssh_key.pem`) to access your EC2 instance.
+
+### Manual Deployment
+
+1. **SSH into EC2 Instance**:
+   ```bash
+   ssh -i ~/.ssh/ec2_ssh_key.pem ubuntu@<EC2_PUBLIC_IP>
+
+2.  Clone the Repository:
+    ```
+      git clone https://github.com/your-username/fastapi-book-project.git
+      cd fastapi-book-project
+    ```
+3.  Set Up the Environment:
+    ```
+      python3 -m venv venv
+      source venv/bin/activate
+      pip install -r requirements.txt
+4. Run the Application:
+   ```
+      uvicorn main:app --host 0.0.0.0 --port 8000
+   ```
+You can then access the application at http://<EC2_PUBLIC_IP>:8000.
+
+
 ## API Endpoints
 
 ### Books
